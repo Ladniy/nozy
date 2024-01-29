@@ -1,17 +1,44 @@
-import { Button, VerticalBox } from "std-widgets.slint";
+import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { PathSeparator } from "./pathseparator.slint";
 
 export component AppWindow inherits Window {
-    in-out property<int> counter: 42;
-    callback request-increase-value();
-    VerticalBox {
-        Text {
-            text: "Counter: \{root.counter}";
-        }
-        Button {
-            text: "Increase value";
-            clicked => {
-                root.request-increase-value();
+    min-width: 1280px;
+    min-height: 720px;
+
+    HorizontalLayout {
+        SidePanel := Rectangle {
+            background: #333333;
+            width: 50px;
+            VerticalLayout {
+                alignment: start;
+                spacing: 5px;
+                padding: 5px;
+                Button {
+                    text: "File";
+                    primary: true;
+                    width: 40px;
+                    height: 40px;
+                }
             }
+        }
+        PathSeparator {
+            MoveToX: SidePanel.x / 1px;
+            MoveToY: SidePanel.x / 1px;
+            LineToX: SidePanel.x / 1px;
+            LineToY: root.height / 1px;
+        }
+        FileTree := Rectangle {
+            background: #333333;
+            width: 200px;
+        }
+        PathSeparator {
+            MoveToX: FileTree.x / 1px;
+            MoveToY: FileTree.width / 1px;
+            LineToX: FileTree.x / 1px;
+            LineToY: root.height / 1px;
+        }
+        Editor := Rectangle {
+            background: #333333;
         }
     }
 }
