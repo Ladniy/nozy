@@ -1,0 +1,18 @@
+export component PathSeparator inherits Path {
+    in-out property <int> MoveToX;
+    in-out property <int> MoveToY;
+    in-out property <int> LineToX;
+    in-out property <int> LineToY;
+
+    width: 3px;
+    stroke: #999999;
+    stroke-width: 3px;
+    MoveTo {
+        x: MoveToX;
+        y: MoveToY;
+    }
+    LineTo {
+        x: LineToX;
+        y: LineToY;
+    }
+}
